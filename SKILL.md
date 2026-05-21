@@ -10,15 +10,40 @@ trigger: jse|\.groovy|\.jsepy|\.jnn|lammps|lmp|ase|vasp|nep|nnap|eam|xyz|poscar|
 
 ## 信息检索
 
-三步走，**禁止凭记忆回答**：
+查询接口和编写代码时严格按以下顺序：
 
-1. **doc_agent/** — 按任务关键词匹配领域文档，建立领域认知和编码约束
-2. **api/** — 按包路径定位类文件，查具体方法签名（`api/` 目录结构与 Java 包层级一一对应，文件名全小写、下划线分隔内部类）
-3. **_src/** — 以上两步信息不足时，读 Java 源码作为最终事实来源
+```
+doc_agent/  →  api/  →  _src/
+```
+
+1. **doc_agent/** — 按任务关键词匹配领域文档，建立领域认知和使用模式
+2. **api/** — 按包路径定位类文件，确认方法签名和返回值类型（目录结构与 Java 包层级一一对应，文件名全小写、下划线分隔内部类）
+3. **_src/** — 仅在前两层信息不足时才读 Java 源码，**禁止直接跳读源码**
+
+## 文档索引与格式
+
+### doc_agent/ 已有文档
+
+- `main.md` — jse 执行 Groovy / Python 脚本的方式
+- `python.md` — Groovy ↔ Python 互操作，SP.Python 调用模式
+- `util.md` — 核心工具类：CS 常量、Conf 配置、UT 方法、OS 平台判定
+- `io.md` — 通用文件读写
+- `system.md` — 系统命令执行（Bash / CMD / PowerShell / Local）
+- `system2.md` — 进阶系统命令（Slurm 调度、SSH 远程执行）
+- `math.md` — 基本数学库：IVector 向量、IMatrix 矩阵、UT.Math、MathEX
+- `math2.md` — 进阶数学：特化向量/矩阵、Table 表格、Func1/2、Complex
+- `MAIN_groovy.md` — Groovy 脚本编码硬约束
+
+### api/ 签名参考格式
+
+- **标题**："## `jse.xxx`" + "> blockquote" + "概述职能"；类标题统一 "### OuterClass.InnerClass — 职能"
+- **签名块**：平铺方法签名以及必要说明注释
+- **文件定位**：目录结构镜像 Java 包层级，文件名全小写、下划线分隔内部类（`jse.code.SP.Python` → `api/jse/code/sp_python.md`）；每个包提供 `_intro.md` 展示架构总览和继承关系
+- **关键提示**：`// :note:` 前缀为用户额外添加的重点提示
 
 ## 编码硬约束
 
-生成 Groovy 脚本时严格遵守 `doc_agent/MAIN_groovy.md`：
+编写 Groovy 脚本时严格遵守 `doc_agent/MAIN_groovy.md`：
 
 - 函数调用必须有括号：`println('Hello')` 非 `println 'Hello'`
 - 函数参数加显式类型：`void foo(double x)` 非 `def foo(x)`
@@ -28,5 +53,6 @@ trigger: jse|\.groovy|\.jsepy|\.jnn|lammps|lmp|ase|vasp|nep|nnap|eam|xyz|poscar|
 
 ## 注意事项
 
-- 不确定的 API 先查 `api/`，禁止凭惯用命名猜测
+- 严格遵守信息检索的三层优先级 `doc_agent/ → api/ → _src/`
+- 不确定的 API 先查 `api/`，禁止凭惯用命名猜测，**禁止直接跳读源码**
 - 涉及 JNI（JEP/MPI/LMP/NNAP）的功能需用户先执行 `jse --jnibuild`
