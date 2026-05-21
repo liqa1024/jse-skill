@@ -1,0 +1,36 @@
+# `jse`
+> jse 框架根包，提供命令行入口。子包按功能域划分：
+
+- `jse.code` — 全局配置、文件 I/O、系统操作、脚本引擎、通用工具集
+- `jse.code.collection` — 集合工具包（视图/副本模式、原始类型动态数组、元组）
+- `jse.code.functional` — 函数式接口（基本类型 1~4 元参数）
+- `jse.code.io` — 底层 I/O 工具（字符扫描、加密、哈希、序列化）
+- `jse.code.iterator` — 免装箱迭代器体系
+- `jse.code.random` — 随机数生成
+- `jse.code.timer` — 计时器
+- `jse.atom` — 分子模拟核心数据结构（原子、坐标、模拟盒、势函数）
+- `jse.atom.data` — ext-xyz / Dump 多帧数据格式
+- `jse.atom.pot` — 分析势函数（EAM、LJ、Soft）
+- `jse.ase` — ASE 适配器
+- `jse.vasp` — VASP 输入输出
+- `jse.lmp` — LAMMPS 集成
+- `jse.math` — 数学基础（复数、扩展工具）
+- `jse.math.operation` — 数组/迭代器层逐元素运算
+- `jse.math.vector` — 向量代数
+- `jse.math.matrix` — 矩阵代数
+- `jse.math.table` — 表格数据结构
+- `jse.math.function` — 数学函数（1~3 维）
+- `jse.cache` — 对象/数组缓存池
+- `jse.clib` — C/C++ 编译工具链
+- `jse.cptr` — C 指针 JNI 封装
+- `jse.gpu` — CUDA GPU 接口
+- `jse.jit` — 运行时 JIT 编译
+- `jse.system` — 外部命令执行器
+- `jse.parallel` — 并行框架 + MPI
+- `jse.plot` — 二维绘图
+- `jse.optim` — 优化器
+- `jsex.nep` — NEP (Neuroevolution Potential) 神经演化势，JIT 编译 native 库实现
+- `jsex.nnap` — NNAP (Neural Network Atomic Potential) 神经网络原子势，含训练框架
+- `jsex.nnap.basis` — NNAP 基组（描述符）抽象层
+- `jsex.nnap.nn` — NNAP 神经网络层抽象
+- `jsex.voronoi` — 3D 增量 Voronoi 图构造与几何分析
