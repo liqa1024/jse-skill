@@ -95,6 +95,7 @@ double max()
 double min()
 
 // === 矩阵乘法 ===
+// :note: 实验性简单实现，效率不如 NumPy/BLAS，生产环境建议通过 NumPy 完成矩阵乘法
 IMatrix matmul(IMatrix aRHS)
 IMatrix lmatmul(IMatrix aRHS)
 void matmul2this(IMatrix aRHS)

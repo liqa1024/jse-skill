@@ -24,14 +24,20 @@ doc_agent/  →  api/  →  _src/
 
 ### doc_agent/ 已有文档
 
+编写新文档前必须通读其**前置文档**——编号相连的上下篇、跨文档引用的目标、同领域关联文档。
+
 - `main.md` — jse 执行 Groovy / Python 脚本的方式
 - `python.md` — Groovy ↔ Python 互操作，SP.Python 调用模式
 - `util.md` — 核心工具类：CS 常量、Conf 配置、UT 方法、OS 平台判定
 - `io.md` — 通用文件读写
 - `system.md` — 系统命令执行（Bash / CMD / PowerShell / Local）
 - `system2.md` — 进阶系统命令（Slurm 调度、SSH 远程执行）
+  - 前置：`system.md`
 - `math.md` — 基本数学库：IVector 向量、IMatrix 矩阵、UT.Math、MathEX
 - `math2.md` — 进阶数学：特化向量/矩阵、Table 表格、Func1/2、Complex
+  - 前置：`math.md`
+- `math3.md` — NumPy 互操作与线性代数：jse↔NumPy 数据转换、调用策略、边界陷阱
+  - 前置：`math.md`、`math2.md`、`python.md`
 - `MAIN_groovy.md` — Groovy 脚本编码硬约束
 
 ### api/ 签名参考格式

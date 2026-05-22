@@ -30,6 +30,7 @@ void forEachCol(DoubleConsumer) / forEachRow(DoubleConsumer)
 double sum() / mean() / max() / min()
 
 // === 矩阵乘法 ===
+// :note: 实验性简单实现，效率不如 NumPy/BLAS，生产环境建议通过 NumPy 完成矩阵乘法
 IMatrix matmul(IMatrix) / lmatmul(IMatrix)        // this × RHS / RHS × this
 void matmul2this(IMatrix) / lmatmul2this(IMatrix)
 void matmul2dest(IMatrix, IMatrix rDest) / lmatmul2dest(IMatrix, IMatrix rDest)

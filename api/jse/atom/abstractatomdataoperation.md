@@ -16,6 +16,7 @@ ISettableAtomData filter(IFilter<IAtom>)
 ISettableAtomData filterType(int aType)
 
 // === 引用切片（返回 IAtomData 视图） ===
+// :note: Groovy 脚本优先使用 List 重载，避免 `as int[]` 转换
 IAtomData refSlice(ISlice)
 IAtomData refSlice(List<Integer>)
 IAtomData refSlice(int[])

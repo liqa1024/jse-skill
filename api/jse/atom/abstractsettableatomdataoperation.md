@@ -12,6 +12,7 @@ protected abstract ISettableAtomData thisAtomData_()
 // newSameSettableAtomData_() / newSettableAtomData_(int) / newSettableAtomData_(int, IBox)
 
 // === 覆写 refSlice 返回 ISettableAtomData ===
+// :note: Groovy 脚本优先使用 List 重载，避免 `as int[]` 转换
 ISettableAtomData refSlice(ISlice)
 ISettableAtomData refSlice(List<Integer>)
 ISettableAtomData refSlice(int[])

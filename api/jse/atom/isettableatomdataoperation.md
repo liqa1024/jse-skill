@@ -6,7 +6,11 @@
 
 ```java
 // === 抽象方法（覆写 refSlice 返回 ISettableAtomData，新增 2this 系列） ===
-ISettableAtomData refSlice(ISlice/List<Integer>/int[]/IIndexFilter)  // 返回可设置
+// :note: Groovy 脚本优先使用 List 重载，避免 `as int[]` 转换
+ISettableAtomData refSlice(ISlice)                                // 返回可设置
+ISettableAtomData refSlice(List<Integer>)                         // 返回可设置
+ISettableAtomData refSlice(int[])                                 // 返回可设置
+ISettableAtomData refSlice(IIndexFilter)                          // 返回可设置
 void map2this(int nAtom, IUnaryFullOperator)                         // 就地映射
 void mapType2this(int nAtom, IUnaryFullOperator<Integer,? super IAtom>) // 就地种类映射
 void mapTypeRandom2this(IRandom, IVector)                             // 就地随机种类

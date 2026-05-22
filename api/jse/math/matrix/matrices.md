@@ -17,6 +17,7 @@ static RowMatrix from(IMatrix)                              // 复制为 RowMatr
 static RowMatrix from(Collection<?> rows) / fromRows(Collection) / fromCols(Collection)
 // Groovy
 static RowMatrix from(int size, Closure<? extends Number>)
+// :note: jse 4.0.1 — from(nRows, nCols, Closure) 忽略 nCols 始终创建方阵（调用单参 fromDouble(aSize,closure)）
 static RowMatrix from(int nRows, int nCols, Closure<? extends Number>)
 
 // === 从 numpy NDArray 创建（自动检测类型，零拷贝） ===

@@ -8,7 +8,11 @@
 // === 抽象方法 ===
 ISettableAtomData filter(IFilter<IAtom>)                       // 通用过滤器
 ISettableAtomData filterType(int aType)                        // 按种类过滤保留
-IAtomData refSlice(ISlice/List<Integer>/int[]/IIndexFilter)    // 引用切片（非拷贝）
+// :note: Groovy 脚本优先使用 List 重载，避免 `as int[]` 转换
+IAtomData refSlice(ISlice)                                       // 引用切片（非拷贝）
+IAtomData refSlice(List<Integer>)                                // 引用切片（非拷贝）
+IAtomData refSlice(int[])                                        // 引用切片（非拷贝）
+IAtomData refSlice(IIndexFilter)                                 // 引用切片（非拷贝）
 ISettableAtomData map(int nAtom, IUnaryFullOperator)           // 每 nAtom 组映射
 ISettableAtomData mapType(int nAtom, IUnaryFullOperator<Integer,? super IAtom>) // 种类映射
 ISettableAtomData mapTypeRandom(IRandom, IVector aWeights)     // 按权重随机分配种类
