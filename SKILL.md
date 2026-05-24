@@ -41,6 +41,8 @@ doc_agent/  →  api/  →  _src/
 - `atom.md` — 原子结构基础
 - `atom2.md` — 具体原子结构实现细节，不同格式的读写与互转
   - 前置：`atom.md`
+- `apc.md` — 原子参量计算器 APC：近邻列表、RDF/SF、BOOP、固体检测
+  - 前置：`atom.md`、`math2.md`
 - `MAIN_groovy.md` — Groovy 脚本编码硬约束
 
 ### api/ 签名参考格式
