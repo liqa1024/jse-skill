@@ -34,6 +34,7 @@ void write(String filePath) throws IOException
 void write(IO.IWriteln) throws IOException
 
 // === MPI 通信（静态） ===
+// :note: 内部接口，doc_agent 不展示
 static void send(SubLammpstrj, int dest, MPI.Comm) throws MPIException
 static SubLammpstrj recv(int src, MPI.Comm) throws MPIException
 static SubLammpstrj bcast(SubLammpstrj, int root, MPI.Comm) throws MPIException

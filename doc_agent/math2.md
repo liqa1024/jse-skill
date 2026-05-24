@@ -2,7 +2,7 @@
 
 `math.md` 已介绍最常用的 double 向量、矩阵和基础数学工具。本文从 jse 的实际支持重心补充进阶数学结构。
 
-> **类引用**：`IVector`=`jse.math.vector.IVector`，`IIntVector`=`jse.math.vector.IIntVector`，`ILogicalVector`=`jse.math.vector.ILogicalVector`，`ILongVector`=`jse.math.vector.ILongVector`，`IFloatVector`=`jse.math.vector.IFloatVector`，`Vector`=`jse.math.vector.Vector`，`IntVector`=`jse.math.vector.IntVector`，`LongVector`=`jse.math.vector.LongVector`，`FloatVector`=`jse.math.vector.FloatVector`，`Vectors`=`jse.math.vector.Vectors`，`IMatrix`=`jse.math.matrix.IMatrix`，`IIntMatrix`=`jse.math.matrix.IIntMatrix`，`ILogicalMatrix`=`jse.math.matrix.ILogicalMatrix`，`RowMatrix`=`jse.math.matrix.RowMatrix`，`Matrices`=`jse.math.matrix.Matrices`，`ITable`=`jse.math.table.ITable`，`Tables`=`jse.math.table.Tables`，`IFunc1`=`jse.math.function.IFunc1`，`Func1`=`jse.math.function.Func1`，`IFunc2`=`jse.math.function.IFunc2`，`Func2`=`jse.math.function.Func2`，`IComplexDouble`=`jse.math.IComplexDouble`，`ComplexDouble`=`jse.math.ComplexDouble`
+> **类引用**：`IVector`=`jse.math.vector.IVector`，`IIntVector`=`jse.math.vector.IIntVector`，`ILogicalVector`=`jse.math.vector.ILogicalVector`，`ILongVector`=`jse.math.vector.ILongVector`，`IFloatVector`=`jse.math.vector.IFloatVector`，`Vector`=`jse.math.vector.Vector`，`IntVector`=`jse.math.vector.IntVector`，`LongVector`=`jse.math.vector.LongVector`，`FloatVector`=`jse.math.vector.FloatVector`，`Vectors`=`jse.math.vector.Vectors`，`DoubleList`=`jse.code.collection.DoubleList`，`IntList`=`jse.code.collection.IntList`，`IDataShell`=`jse.math.IDataShell`，`IMatrix`=`jse.math.matrix.IMatrix`，`IIntMatrix`=`jse.math.matrix.IIntMatrix`，`ILogicalMatrix`=`jse.math.matrix.ILogicalMatrix`，`RowMatrix`=`jse.math.matrix.RowMatrix`，`Matrices`=`jse.math.matrix.Matrices`，`ITable`=`jse.math.table.ITable`，`Tables`=`jse.math.table.Tables`，`IFunc1`=`jse.math.function.IFunc1`，`Func1`=`jse.math.function.Func1`，`IFunc2`=`jse.math.function.IFunc2`，`Func2`=`jse.math.function.Func2`，`IComplexDouble`=`jse.math.IComplexDouble`，`ComplexDouble`=`jse.math.ComplexDouble`
 
 ## 核心取向
 
@@ -86,6 +86,22 @@ IVector v = fv.asVec()                     // 获取 double 引用
 ```
 
 一般脚本计算不应主动追求 float；除非数据来源或内存压力确实要求，否则使用 `IVector` 更直接。
+
+### 可变长度与 native 输入
+
+jse 中向量长度固定不变，对于需要可变长度的情况，可以使用对应的 `DoubleList`、`IntList` 等非装箱的动态 List。Builder 适合“构造一个向量”的场景，而这些则更适合本身长度就不确定的情况。
+
+```groovy
+DoubleList dl = new DoubleList()
+dl << 1.0d
+dl << 2.0d
+assert dl.size() == 2
+// 同样支持读取和写入
+double x = dl[0]
+dl[0] = 10.0d
+```
+
+`DoubleList` 和 `Vector` 都实现 `IDataShell<double[]>`，`IntList` 和 `IntVector` 都实现 `IDataShell<int[]>`，long/float/boolean 体系也遵循同一思路。因此很多以 `IDataShell` 为参数的 native 接口（C 指针，MPI 等）可以直接接收这些。
 
 ## 矩阵
 

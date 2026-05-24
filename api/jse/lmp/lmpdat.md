@@ -62,6 +62,7 @@ void write(IO.IWriteln) throws IOException
 Lmpdat copy()
 
 // === MPI 通信（静态） ===
+// :note: 内部接口，doc_agent 不展示
 static void send(Lmpdat, int dest, MPI.Comm) throws MPIException
 static Lmpdat recv(int src, MPI.Comm) throws MPIException
 static Lmpdat bcast(Lmpdat, int root, MPI.Comm) throws MPIException

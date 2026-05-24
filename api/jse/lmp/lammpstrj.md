@@ -39,6 +39,7 @@ Lammpstrj copy()
 List<ITable> asTables()                                        // 所有帧转为 ITable 列表
 
 // === MPI 通信（静态） ===
+// :note: 内部接口，doc_agent 不展示
 static void send(Lammpstrj, int dest, MPI.Comm) throws MPIException
 static Lammpstrj recv(int src, MPI.Comm) throws MPIException
 static Lammpstrj bcast(Lammpstrj, int root, MPI.Comm) throws MPIException

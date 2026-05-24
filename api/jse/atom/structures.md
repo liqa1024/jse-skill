@@ -24,6 +24,7 @@ static IAtomData HCP(double cellSize, double cellHeight, int repeat)
 static IAtomData HCP(double cellSize, int repeat)
 
 // 从已有晶胞扩胞
+// :note: 不建议使用，扩胞应优先使用 IAtomDataOperation.repeat()
 static IAtomData from(IAtomData lattice, int repeatX, int repeatY, int repeatZ)
 static IAtomData from(IAtomData lattice, int repeat)
 

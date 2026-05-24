@@ -27,17 +27,20 @@ doc_agent/  →  api/  →  _src/
 编写新文档前必须通读其**前置文档**——编号相连的上下篇、跨文档引用的目标、同领域关联文档。
 
 - `main.md` — jse 执行 Groovy / Python 脚本的方式
-- `python.md` — Groovy ↔ Python 互操作，SP.Python 调用模式
+- `python.md` — Python 脚本使用方式，jse/Groovy ↔ Python 互操作
 - `util.md` — 核心工具类：CS 常量、Conf 配置、UT 方法、OS 平台判定
 - `io.md` — 通用文件读写
-- `system.md` — 系统命令执行（Bash / CMD / PowerShell / Local）
+- `system.md` — 系统命令执行基础
 - `system2.md` — 进阶系统命令（Slurm 调度、SSH 远程执行）
   - 前置：`system.md`
 - `math.md` — 基本数学库：IVector 向量、IMatrix 矩阵、UT.Math、MathEX
-- `math2.md` — 进阶数学：特化向量/矩阵、Table 表格、Func1/2、Complex
+- `math2.md` — 进阶数学：特化向量/矩阵、IDataShell 输入、Table 表格、Func1/2、Complex
   - 前置：`math.md`
-- `math3.md` — NumPy 互操作与线性代数：jse↔NumPy 数据转换、调用策略、边界陷阱
+- `math3.md` — 高级数学：NumPy 互操作与线性代数：jse ↔ NumPy 数据转换、调用策略、边界处理
   - 前置：`math.md`、`math2.md`、`python.md`
+- `atom.md` — 原子结构基础
+- `atom2.md` — 具体原子结构实现细节，不同格式的读写与互转
+  - 前置：`atom.md`
 - `MAIN_groovy.md` — Groovy 脚本编码硬约束
 
 ### api/ 签名参考格式
@@ -61,4 +64,5 @@ doc_agent/  →  api/  →  _src/
 
 - 严格遵守信息检索的三层优先级 `doc_agent/ → api/ → _src/`
 - 不确定的 API 先查 `api/`，禁止凭惯用命名猜测，**禁止直接跳读源码**
+- 涉及 CPointer、MPI 等 native 数据输入时，优先识别 `Vector`/`IntVector` 与 `DoubleList`/`IntList` 等 `IDataShell` 容器；脚本层只使用其普通向量/List 接口，不展开 `IDataShell` 底层方法
 - 涉及 JNI（JEP/MPI/LMP/NNAP）的功能需用户先执行 `jse --jnibuild`

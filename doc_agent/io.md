@@ -126,7 +126,7 @@ IO.str2csv(rows, "out.tsv", CSVFormat.TDF)
 double x = IO.Text.str2double("3.14")
 Number num = IO.Text.str2number("1.5e-3")
 
-// 向量
+// 向量（同时支持空格和分号分割）
 Vector v = IO.Text.str2data("1.0 2.0 3.0 4.0")
 
 // 分割
