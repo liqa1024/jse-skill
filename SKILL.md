@@ -70,5 +70,6 @@ doc_agent/  →  api/  →  _src/
 
 - 严格遵守信息检索的三层优先级 `doc_agent/ → api/ → _src/`
 - 不确定的 API 先查 `api/`，禁止凭惯用命名猜测，**禁止直接跳读源码**
-- 涉及 CPointer、MPI 等 native 数据输入时，优先识别 `Vector`/`IntVector` 与 `DoubleList`/`IntList` 等 `IDataShell` 容器；脚本层只使用其普通向量/List 接口，不展开 `IDataShell` 底层方法
+- 涉及 CPointer、MPI 等 native 数据输入时，优先识别 `Vector`/`IntVector` 与 `DoubleList`/`IntList` 等 `IDataShell` 容器
 - 涉及 JNI（JEP/MPI/LMP/NNAP）的功能需用户先执行 `jse --jnibuild`
+- 问题排查时通过 `Conf.DEBUG = true` 开启完整栈追踪
